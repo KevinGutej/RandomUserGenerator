@@ -7,3 +7,16 @@ function generateRandomUser($letter) {
 
     return $letter . $randomAdjective . $randomNoun;
 }
+
+if (isset($_GET['letter'])) {
+    $letter = strtoupper($_GET['letter']);
+    if (ctype_alpha($letter) && strlen($letter) == 1) {
+        $username = generateRandomUser($letter);
+        echo "Random username starting with '$letter': $username";
+    } else {
+        echo "Please only enter one letter.";
+    }
+} else {
+    echo "Please use a letter, e.g A";
+}
+?>
