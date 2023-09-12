@@ -33,5 +33,23 @@ class UnoGame {
         echo "Your hand: " . implode(", ", $currentPlayer->getHand()) . "\n";
 
         $playableCards = $this->getPlayableCards($currentPlayer);
+
+            if (empty($playableCards)) {
+                echo "No playable cards. Drawing a card...\n";
+                $this->drawCard($currentPlayer);
+            } else {
+                $selectedCard = $currentPlayer->chooseCardToPlay($playableCards);
+                $this->playCard($currentPlayer, $selectedCard);
+            }
+            
+            if (empty($currentPlayer->getHand())) {
+                echo "{$currentPlayer->getName()} wins!\n";
+                break;
+            }
+            
+            $currentPlayerIndex = ($currentPlayerIndex + 1) % count($this->players); //still need to create this functions , just implementing them
+        }
     }
 }
+
+
