@@ -52,4 +52,24 @@ class UnoGame {
     }
 }
 
+Class Player {
+    private $name;
+    private $hand = [];
+
+    public function __construct($name) {
+        $this->name = $name;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getHand() {
+        return $this->hand;
+    }
+
+    public function addCardToHand($card) {
+        $this->hand[] = $card;
+    }
+}
 
