@@ -71,5 +71,12 @@ Class Player {
     public function addCardToHand($card) {
         $this->hand[] = $card;
     }
+    public function chooseCardToPlay($playableCards) {
+        //Ask player for input(card choice)
+        return $playableCards[0];
+    }
 }
-
+$player1 = new Player("Player 1");
+$player2 = new Player("Player 2");
+$unoGame = new UnoGame($player1, $player2);
+$unoGame->play();
